@@ -16,10 +16,9 @@ $errorActionPreference = "Stop"
 $WarningPreference = "SilentlyContinue"
 
 Param(
-
         [Parameter(Mandatory=$false)]
         [string]$targetSubscription
-        )
+)
 
 class GlobalResources {
     [string]$lawName
