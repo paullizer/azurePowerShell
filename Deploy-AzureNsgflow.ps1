@@ -4,8 +4,22 @@
 # Step 3: Update $globalResources, $regionalResources
 # Step 4: Copy and paste this code into the Azure PowerShell window in the Azure Portal OR locally if you have Az module installed
 
+# Run against all subscriptions 
+# Deploy-AzureNsgflow.ps1
+
+# Run against a targeted subscription, must supply subscription name
+# Deploy-AzureNsgflow.ps1 -targetSubscription "ENTER_SUBSCRIPTION_NAME"
+
+
+
 $errorActionPreference = "Stop"
 $WarningPreference = "SilentlyContinue"
+
+Param(
+
+        [Parameter(Mandatory=$false)]
+        [string]$targetSubscription
+        )
 
 class GlobalResources {
     [string]$lawName
@@ -136,7 +150,12 @@ function Deploy-Nsgflow {
     
 }
 
-$allSubscriptions = Get-AzSubscription -SubscriptionName "ENTER_SUBCRIPTION_NAME_HERE"
+if ($targetSubscription){
+    $allSubscriptions = Get-AzSubscription -SubscriptionName $targetSubscription
+} else {
+    $allSubscriptions = Get-AzSubscription 
+}
+
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights | Out-Null
 
 Deploy-Nsgflow
