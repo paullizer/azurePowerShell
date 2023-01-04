@@ -37,24 +37,6 @@ $regionalResources = @(
         saName='ENTER_STORAGE_ACCOUNT_NAME_HERE';
         saResourceGroup='ENTER_STORAGE_ACCOUNT_RESOURCE_GROUP_NAME_HERE'
     }
-    # IF YOU DONT HAVE ADDITIONAL REGIONS WITH VNETS, THEN YOU CAN DELETE THE FOLLOWING
-    # West US
-    [RegionalResources]@{
-        region='WestUS'; # IF YOU DONT HAVE WESTUS, REPLACE WITH YOUR REGION
-        nwName='ENTER_NETWORK_WATCHER_NAME_HERE';
-        nwResourceGroup='ENTER_NETWORK_WATCHER_RESOURCE_GROUP_NAME_HERE';
-        saName='ENTER_STORAGE_ACCOUNT_NAME_HERE';
-        saResourceGroup='ENTER_STORAGE_ACCOUNT_RESOURCE_GROUP_NAME_HERE'
-    }
-    # ADD MORE REGIONS, COPY EXISTING AND PASTE AFTER THE {}
-    [RegionalResources]@{
-        region='TBD';
-        nwName='TBD';
-        nwResourceGroup='TBD';
-        saName='TBD';
-        saResourceGroup='TBD'
-    }
-    # ADD MORE REGIONS HERE
 )
 
 
@@ -154,7 +136,7 @@ function Deploy-Nsgflow {
     
 }
 
-$allSubscriptions = Get-AzSubscription
+$allSubscriptions = Get-AzSubscription -SubscriptionName "ENTER_SUBCRIPTION_NAME_HERE"
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights | Out-Null
 
 Deploy-Nsgflow
