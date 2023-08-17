@@ -7,7 +7,7 @@
 #>
 
 # Update to use the subscription ID of the vWAN hub
-$subscriptionId = "35028faa-696d-495e-9fa7-7c144ea6a6f0"
+$subscriptionId = "subscription_id"
 
 # Update to use the original/primary hub, this hub will have all of its vnet connections removed
 $primaryVirtualHubResourceGroupName = "RG-vWAN"
